@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDP Junior — Maktablar uchun taqdimot</title>
+<meta name="description" content="Maktab o'quvchilari uchun IT taqdimoti: sayt, o'yin, Telegram bot, sun'iy intellekt va kiberxavfsizlik. PDP Junior 18 oylik dasturi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400..700&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/deck.css">
+<link rel="stylesheet" href="assets/css/scenes.css">
+<link rel="stylesheet" href="assets/css/school.css">
+</head>
+<body>
+
+<!-- ikonkalar -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.6-3.3 8.3-8 9-4.7-.7-8-4.4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M3 13l2-6h14l2 6v4H3z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 4h6"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.5 2.5 7z"/><path d="M10 13l11-10"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9v6l5-3z"/></symbol>
+  <symbol id="i-game" viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v1a4 4 0 0 1-7 2.6L14 15h-4l-1 .6A4 4 0 0 1 2 13v-1a4 4 0 0 1 4-4z"/><path d="M7 11v3M5.5 12.5h3M16 12h.01M18 13.5h.01"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></symbol>
+  <symbol id="i-face" viewBox="0 0 24 24"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M9 9.5h.01M15 9.5h.01M9 15a4 4 0 0 0 6 0"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="5" rx="2"/><path d="M12 7v3M12 10l5 4-5 4-5-4z"/><path d="M12 18v4"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="9" r="2.5"/><path d="M6 7.5v9M18 11.5c0 4-6 3-11 6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 9.5a4.3 4.3 0 0 1-.5 8.5z"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="4"/><path d="M12 8V4M12 4h.01M9 13h.01M15 13h.01M9.5 16.5h5M2 13v3M22 13v3"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5"/></symbol>
+  <symbol id="i-stack" viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5M3 16.5l9 4.5 9-4.5"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24"><path d="M3 5h10M8 3v2M5 5c1 4 4 7 7 8M11 5c-1 4-4 7-7 8"/><path d="M13 21l4-9 4 9M14.5 18h5"/></symbol>
+  <symbol id="i-wand" viewBox="0 0 24 24"><path d="M4 20L15 9M13 7l2-2 4 4-2 2z"/><path d="M6 3v3M4.5 4.5h3M19 14v3M17.5 15.5h3"/></symbol>
+  <symbol id="i-nodes" viewBox="0 0 24 24"><rect x="2" y="9" width="6" height="6" rx="1.5"/><rect x="16" y="3" width="6" height="6" rx="1.5"/><rect x="16" y="15" width="6" height="6" rx="1.5"/><path d="M8 12h4M12 12c0-6 4-6 4-6M12 12c0 6 4 6 4 6"/></symbol>
+  <symbol id="i-usb" viewBox="0 0 24 24"><rect x="7" y="9" width="10" height="13" rx="2"/><path d="M9 9V3h6v6M11 5.5h.01M13 5.5h.01"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14.5v2.5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-sheet" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-8-4.6-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.4 12 20 12 20z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v4M12 17.5h.01"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 15l-3-3c1-4 5-9 13-9 0 8-5 12-9 13z"/><circle cx="15" cy="9" r="1.8"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 9l3 3-3 3M12 15h6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3"/></symbol>
+</svg>
+
+<div class="orbs" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="stage">
+  <div class="progress"><i id="bar"></i></div>
+
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span><b>PDP Junior</b><em>Maktablar uchun</em></div>
+    <div class="tools">
+      <button class="tool opt" id="btnNotes" aria-pressed="false" aria-label="Ustoz izohlari" title="Izohlar (T)"><svg class="ic"><use href="#i-notes"/></svg></button>
+      <button class="tool opt" id="btnGrid" aria-label="Barcha slaydlar" title="Slaydlar (O)"><svg class="ic"><use href="#i-grid"/></svg></button>
+      <button class="tool" id="btnFs" aria-label="To'liq ekran" title="To'liq ekran (F)"><svg class="ic"><use href="#i-full"/></svg></button>
+    </div>
+  </header>
+
+  <main class="slides" id="slides">
+
+    <!-- ═══ 01 MUQOVA ═══ -->
+    <section class="slide" data-ac="nu" aria-label="Muqova">
+      <div class="frame split wide-l">
+        <div>
+          <p class="eyebrow" data-a style="--d:0">PDP Junior · 11–16 yosh</p>
+          <h1 class="big" data-a style="--d:1;margin-top:14px">Telefoningdagi hamma narsani<br><span class="grad">kimdir yozgan</span></h1>
+          <p class="lede" data-a style="--d:2;margin-top:20px">Bugun ko'ramiz: buni qanday qilib <b>sen ham</b> yoza olasan.</p>
+          <div class="row" data-a style="--d:3;margin-top:28px">
+            <button class="btn" data-goto="1">Boshladik <svg class="ic"><use href="#i-arrow"/></svg></button>
+            <button class="btn ghost" data-goto="14">Yozilish</button>
+          </div>
+        </div>
+        <div class="hero" data-a style="--d:2" aria-hidden="true">
+          <div class="laptop"><div class="scr"><i class="cl"></i><i class="cl"></i><i class="cl"></i><i class="cl"></i><i class="cl"></i></div><div class="base"></div></div>
+          <div class="glass float f1"><svg class="ic"><use href="#i-code"/></svg>Sayt</div>
+          <div class="glass float f2"><svg class="ic"><use href="#i-game"/></svg>O'yin</div>
+          <div class="glass float f3"><svg class="ic"><use href="#i-bot"/></svg>Bot</div>
+          <div class="glass float f4"><svg class="ic"><use href="#i-spark"/></svg>AI</div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zaldan so'rang: "Kim telefonda o'yin o'ynaydi?" — deyarli hamma qo'l ko'taradi. "Kim shu o'yinni o'zi yasab ko'rgan?" — mana shu farq haqida gaplashamiz.</aside>
+    </section>
+
+    <!-- ═══ 02 HAMMASI KOD ═══ -->
+    <section class="slide" data-ac="nu" aria-label="Qaysi biri kod?">
+      <div class="frame">
+        <div class="head">
+          <p class="eyebrow" data-a style="--d:0">Savol</p>
+          <h2 class="t" data-a style="--d:1">Qaysi biri <span class="grad">kod bilan yozilgan?</span></h2>
+        </div>
+        <div class="flips" data-a style="--d:2">
+          <button class="flip" style="--c1:#F472B6;--c2:#C9372C"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-mic"/></svg></span><b>TikTok</b></div><div class="face back"><svg class="ic"><use href="#i-spark"/></svg>Lenta algoritmi seni o'rganadi</div></div></button>
+          <button class="flip" style="--c1:#A78BFA;--c2:#6248E0"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-game"/></svg></span><b>O'yinlar</b></div><div class="face back"><svg class="ic"><use href="#i-code"/></svg>Har sakrash va har ochko — kod</div></div></button>
+          <button class="flip" style="--c1:#FB7185;--c2:#DC2626"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-video"/></svg></span><b>YouTube</b></div><div class="face back"><svg class="ic"><use href="#i-spark"/></svg>Keyingi videoni AI tanlaydi</div></div></button>
+          <button class="flip" style="--c1:#2FD4B4;--c2:#0E8C7A"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-card"/></svg></span><b>Karta to'lovi</b></div><div class="face back"><svg class="ic"><use href="#i-db"/></svg>Baza bir soniyada tekshiradi</div></div></button>
+          <button class="flip" style="--c1:#38BDF8;--c2:#2A7FB8"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-sheet"/></svg></span><b>Elektron kundalik</b></div><div class="face back"><svg class="ic"><use href="#i-server"/></svg>Baholaring serverda saqlanadi</div></div></button>
+          <button class="flip" style="--c1:#F59E0B;--c2:#E0661A"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-face"/></svg></span><b>Yuz bilan ochish</b></div><div class="face back"><svg class="ic"><use href="#i-lock"/></svg>Kamera yuzingni namunaga solishtiradi</div></div></button>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Kartalarni o'quvchilarga bostiring. Javob: hammasi. Xulosa: "Bularning hech birini sehr yaratmagan — odam yozgan. Demak, o'rganish mumkin."</aside>
+    </section>
+
+    <!-- ═══ 03 JONLI DEMO ═══ -->
+    <section class="slide" data-ac="fe" aria-label="Birinchi sahifang">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>1</b><span>Sinab ko'r</span></span>
+          <h2 class="t" data-a style="--d:1">3 daqiqada — <span class="grad">birinchi sahifang</span></h2>
+        </div>
+        <div class="split wide-r">
+          <div class="glass pad ctl" data-a style="--d:2">
+            <label for="fdName">Isming</label>
+            <input type="text" id="fdName" value="Aziza" maxlength="14" autocomplete="off">
+            <label>Rang</label><div class="sw" id="fdColors"></div>
+            <label>Belgi</label><div class="sw emo" id="fdEmoji"></div>
+            <label for="fdSize">Kattalik</label><input type="range" id="fdSize" min="28" max="84" value="54">
+          </div>
+          <div data-a style="--d:3;display:flex;flex-direction:column;gap:10px">
+            <div class="bw"><div class="bw-bar"><i></i><i></i><i></i><span>mening-sahifam.html</span></div>
+              <div class="bw-body" style="min-height:clamp(200px,34vh,320px)"><div id="fdOut">Aziza</div></div></div>
+            <div class="codeline" id="fdCode"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Bitta o'quvchini chaqiring: ismini yozsin, rang tanlasin. Pastdagi kod qatorini ko'rsating — "sen tugma bosding, kompyuter shu kodni yozdi. Darsda buni o'zing yozasan".</aside>
+    </section>
+
+    <!-- ═══ 04 SAYT QURILISHI ═══ -->
+    <section class="slide" data-ac="fe" aria-label="Sayt shunday quriladi">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>1</b><span>Frontend · 1–6-oy</span></span>
+          <h2 class="t" data-a style="--d:1">Sayt shunday <span class="grad">quriladi</span></h2>
+        </div>
+        <div class="glass player" data-scene="feBuild" data-a style="--d:2">
+          <div class="pl-screen">
+            <div class="ed"><div class="ed-bar"><i></i><i></i><i></i><span>index.html</span></div><pre data-code></pre></div>
+            <div class="bw"><div class="bw-bar"><i></i><i></i><i></i><span>mening-saytim.netlify.app</span></div>
+              <div class="bw-body"><div class="site" data-site><h4 data-h></h4><p data-p></p><span class="like" data-like><svg class="ic"><use href="#i-heart"/></svg><span data-n>0</span></span></div></div>
+            </div>
+          </div>
+          <div class="pl-ctrl">
+            <button class="pl-btn" aria-label="Qayta ko'rish"><svg class="ic"><use href="#i-replay"/></svg></button>
+            <div class="pl-bar"><i></i></div>
+            <div class="pl-steps"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>HTML — skelet, CSS — kiyim, JavaScript — harakat. Birinchi oyning oxirida o'quvchining sahifasi internetda o'z havolasi bilan turadi.</aside>
+    </section>
+
+    <!-- ═══ 05 O'YIN ═══ -->
+    <section class="slide" data-ac="fe" aria-label="O'yin yasash">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>1</b><span>6-oy · O'yinlar</span></span>
+          <h2 class="t" data-a style="--d:1">Bu o'yin — <span class="grad">80 qator kod</span></h2>
+        </div>
+        <div class="split wide-l">
+          <div class="gm" data-scene="game" data-a style="--d:2">
+            <canvas width="800" height="470" aria-label="Yulduz tutish o'yini"></canvas>
+            <div class="gm-hud"><span>OCHKO <b data-score>0</b></span><span>VAQT <b data-time>30</b></span></div>
+            <div class="gm-ov" data-ov><div>
+              <h3 data-ovt>Yulduzlarni tut!</h3>
+              <p data-ovs style="opacity:.85;margin-top:6px">Sichqoncha yoki barmoq bilan savatni sur</p>
+              <button class="btn" data-start style="margin-top:16px"><svg class="ic"><use href="#i-play"/></svg>O'ynash</button>
+            </div></div>
+          </div>
+          <div class="glass pad bullets" data-a style="--d:3">
+            <div><svg class="ic"><use href="#i-code"/></svg>6-oyda o'zing yozasan</div>
+            <div><svg class="ic"><use href="#i-layout"/></svg>Canvas: chizish va harakat</div>
+            <div><svg class="ic"><use href="#i-target"/></svg>To'qnashuv, ochko, rekord</div>
+            <div><svg class="ic"><use href="#i-globe"/></svg>Do'stlaringga havola yuborasan</div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zaldan bitta o'quvchini chaqirib 30 soniya o'ynating, ochkosini e'lon qiling. Eng ko'p ochko olganga kichik sovg'a — zal qiziydi.</aside>
+    </section>
+
+    <!-- ═══ 06 TELEGRAM BOT ═══ -->
+    <section class="slide" data-ac="be" aria-label="Telegram bot">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>2</b><span>Python · 9-oy</span></span>
+          <h2 class="t" data-a style="--d:1">Bot — <span class="grad">odam emas, kod</span></h2>
+        </div>
+        <div class="split" data-scene="tgBot">
+          <div class="phone" data-a style="--d:2"><div class="scr">
+            <div class="tg-top"><span class="av"><svg class="ic"><use href="#i-bot"/></svg></span><div><b>Ob-havo bot</b><small>bot</small></div></div>
+            <div class="chat" data-chat></div>
+          </div></div>
+          <div class="glass player" data-a style="--d:3">
+            <div class="ed"><div class="ed-bar"><i></i><i></i><i></i><span>bot.py</span></div><pre><span class="ln" data-l="1"><span class="k">import</span> telebot</span><span class="ln" data-l="2">bot = telebot.TeleBot(TOKEN)</span>
+<span class="ln" data-l="3"><span class="f">@bot.message_handler</span>(commands=[<span class="s">"start"</span>])</span><span class="ln" data-l="3"><span class="k">def</span> salom(msg):</span><span class="ln" data-l="3">    bot.reply_to(msg, <span class="s">"Qaysi shahar?"</span>,</span><span class="ln" data-l="3">                 reply_markup=tugmalar)</span>
+<span class="ln" data-l="4"><span class="f">@bot.message_handler</span>(content_types=[<span class="s">"text"</span>])</span><span class="ln" data-l="4"><span class="k">def</span> havo(msg):</span><span class="ln" data-l="4">    bot.reply_to(msg, ob_havo(msg.text))</span>
+<span class="ln" data-l="5">bot.infinity_polling()</span></pre></div>
+            <div class="pl-ctrl">
+              <button class="pl-btn" aria-label="Qayta ko'rish"><svg class="ic"><use href="#i-replay"/></svg></button>
+              <div class="pl-bar"><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>O'ngdagi kod — botning "miyasi", ishlayotgan qatori yonib turadi. 9-oyda har bir o'quvchi o'z botini yozadi: dars jadvali, ob-havo yoki test boti.</aside>
+    </section>
+
+    <!-- ═══ 07 AI ═══ -->
+    <section class="slide" data-ac="ai" aria-label="AI bilan ishlash">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>3</b><span>Sun'iy intellekt · 13–15-oy</span></span>
+          <h2 class="t" data-a style="--d:1">AI'dan <span class="grad">yaxshi javob</span> olish — ko'nikma</h2>
+        </div>
+        <div class="split wide-r" data-scene="prompt">
+          <div class="pb-chips" data-a style="--d:2">
+            <button class="chip" aria-pressed="false" data-k="0"><svg class="ic"><use href="#i-user"/></svg><span><small>Rol</small>Sen tajribali futbol murabbiyisan</span></button>
+            <button class="chip" aria-pressed="false" data-k="1"><svg class="ic"><use href="#i-target"/></svg><span><small>Kim uchun</small>12 yoshli bola uchun</span></button>
+            <button class="chip" aria-pressed="false" data-k="2"><svg class="ic"><use href="#i-sheet"/></svg><span><small>Format</small>Hafta kunlari bo'yicha jadval qil</span></button>
+          </div>
+          <div class="glass pad" data-a style="--d:3;display:flex;flex-direction:column;gap:12px">
+            <div class="prompt" data-prompt></div>
+            <div class="row" style="justify-content:space-between"><span class="small">Javob sifati</span><b class="mono" data-q>20%</b></div>
+            <div class="meter"><i data-meter></i></div>
+            <div class="glass answer" data-answer></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Chapdagilarni birma-bir bosing. Bir xil AI, lekin so'rov aniqlashgani sari javob foydali bo'ladi. Kursda AI'ni uy vazifasini ko'chirish uchun emas, tezroq o'rganish uchun ishlatishni o'rgatamiz.</aside>
+    </section>
+
+    <!-- ═══ 08 PAROL ═══ -->
+    <section class="slide" data-ac="sec" aria-label="Parol kuchi">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>4</b><span>Kiberxavfsizlik · 16–18-oy</span></span>
+          <h2 class="t" data-a style="--d:1">Parolingni <span class="grad">necha soniyada</span> topadi?</h2>
+        </div>
+        <div class="split wide-l">
+          <div class="glass pad pw" data-scene="pw" data-a style="--d:2">
+            <input type="text" value="12345" maxlength="28" autocomplete="off" spellcheck="false" aria-label="Parol">
+            <div class="pwbar" style="margin-top:16px"><i></i></div>
+            <p class="small" style="margin-top:16px">Buzish uchun kerak bo'lgan vaqt</p>
+            <p class="pwtime" data-time>—</p>
+            <p class="small" data-hint style="margin-top:10px"></p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px" data-a style="--d:3">
+            <div class="glass shield"><svg class="ic"><use href="#i-shield"/></svg><b>O'zingni himoya qilishni o'rganasan</b></div>
+            <div class="glass shield"><svg class="ic"><use href="#i-lock"/></svg><b>Mashqlar — maxsus o'quv muhitida</b></div>
+            <div class="glass shield"><svg class="ic"><use href="#i-user"/></svg><b>Etika va qonun — birinchi darsdan</b></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zaldan parol turini aytdiring (o'z parolini emas!) va yozib ko'rsating. Maktab o'quvchilarining aksariyati zaif parol ishlatadi — bu ularga darhol foydali bilim.</aside>
+    </section>
+
+    <!-- ═══ 09 FISHING ═══ -->
+    <section class="slide" data-ac="sec" aria-label="Soxta xabarni topish">
+      <div class="frame">
+        <div class="head">
+          <span class="badge" data-a style="--d:0"><b>4</b><span>17-oy · Fishing</span></span>
+          <h2 class="t" data-a style="--d:1">Qaysi biri <span class="grad">tuzoq?</span></h2>
+        </div>
+        <div data-scene="phish">
+          <div class="sms-row" data-a style="--d:2">
+            <button class="glass sms good">
+              <span class="from"><span class="av"><svg class="ic"><use href="#i-card"/></svg></span><span><b>Bank</b><small>bugun, 14:02</small></span></span>
+              <span class="bubble">Kartangizdan 45 000 so'm to'landi. Qoldiq: 312 000 so'm.</span>
+              <span class="verdict"><svg class="ic"><use href="#i-check"/></svg>Oddiy xabar: havola yo'q, hech narsa so'ramaydi</span>
+            </button>
+            <button class="glass sms bad">
+              <span class="from"><span class="av" style="background:#E0661A"><svg class="ic"><use href="#i-star"/></svg></span><span><b>+998 90 ••• •• 17</b><small>bugun, 14:05</small></span></span>
+              <span class="bubble"><span class="hl-flag">TABRIKLAYMIZ!</span> Siz yangi telefon yutdingiz. <span class="hl-flag">1 soat ichida</span> oling: <span class="u hl-flag">bank-sovga.win/olish</span></span>
+              <span class="verdict"><svg class="ic"><use href="#i-alert"/></svg>Tuzoq! Kartang ma'lumotini o'g'irlaydi</span>
+            </button>
+          </div>
+          <div class="flags" data-flags style="margin-top:18px">
+            <span class="tag ac"><svg class="ic"><use href="#i-alert"/></svg>Juda yaxshi sovg'a</span>
+            <span class="tag ac"><svg class="ic"><use href="#i-alert"/></svg>Shoshiltiradi</span>
+            <span class="tag ac"><svg class="ic"><use href="#i-alert"/></svg>G'alati havola</span>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Ovoz berdiring: qaysi biri soxta? Keyin bosing. "Bu tuzoqlar kattalarni ham aldaydi — kursdan keyin sen oilangni himoya qila olasan."</aside>
+    </section>
+
+    <!-- ═══ 10 NIMA YASAYSAN ═══ -->
+    <section class="slide" data-ac="nu" aria-label="Nima yasaysan">
+      <div class="frame">
+        <div class="head">
+          <p class="eyebrow" data-a style="--d:0">Natija</p>
+          <h2 class="t" data-a style="--d:1">18 oyda <span class="grad">nima yasaysan?</span></h2>
+        </div>
+        <div class="tiles" data-a style="--d:2">
+          <div class="glass tile" style="--c:var(--fe)"><span class="ico"><svg class="ic"><use href="#i-globe"/></svg></span><b>O'z sayting</b><small>Internetda, havolasi bilan</small></div>
+          <div class="glass tile" style="--c:var(--fe)"><span class="ico"><svg class="ic"><use href="#i-game"/></svg></span><b>O'z o'ying</b><small>Do'stlaringga yuborasan</small></div>
+          <div class="glass tile" style="--c:var(--be)"><span class="ico"><svg class="ic"><use href="#i-bot"/></svg></span><b>Telegram bot</b><small>Haqiqiy foydalanuvchilar uchun</small></div>
+          <div class="glass tile" style="--c:var(--be)"><span class="ico"><svg class="ic"><use href="#i-stack"/></svg></span><b>To'liq ilova</b><small>Sayt + server + baza</small></div>
+          <div class="glass tile" style="--c:var(--ai)"><span class="ico"><svg class="ic"><use href="#i-spark"/></svg></span><b>AI yordamchi</b><small>O'zing qurgan Jarvis</small></div>
+          <div class="glass tile" style="--c:var(--sec)"><span class="ico"><svg class="ic"><use href="#i-shield"/></svg></span><b>Xavfsizlik ko'nikmasi</b><small>O'zingni va oilangni himoya qilasan</small></div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Bu — kursni to'liq tugatgan o'quvchining natijasi. Har bir loyiha jonli havola bo'ladi: telefonda ochib do'stiga yoki ota-onasiga ko'rsata oladi.</aside>
+    </section>
+
+    <!-- ═══ 11 YO'L XARITASI ═══ -->
+    <section class="slide" data-ac="nu" aria-label="18 oylik yo'l">
+      <div class="frame">
+        <div class="head">
+          <p class="eyebrow" data-a style="--d:0">Dastur tuzilishi</p>
+          <h2 class="t" data-a style="--d:1">18 oy — <span class="grad">4 bosqich</span></h2>
+        </div>
+        <div class="road" data-a style="--d:2">
+          <span class="runner" aria-hidden="true"></span>
+          <button class="glass st" data-goto="3" style="--c:var(--fe)"><span class="ico"><svg class="ic"><use href="#i-code"/></svg></span><span class="m">1–6-OY</span><h3>Frontend</h3><p>Sayt va o'yin</p></button>
+          <button class="glass st" data-goto="5" style="--c:var(--be)"><span class="ico"><svg class="ic"><use href="#i-server"/></svg></span><span class="m">7–12-OY</span><h3>Python</h3><p>Bot, baza va server</p></button>
+          <button class="glass st" data-goto="6" style="--c:var(--ai)"><span class="ico"><svg class="ic"><use href="#i-spark"/></svg></span><span class="m">13–15-OY</span><h3>Sun'iy intellekt</h3><p>Aqlli yordamchi</p></button>
+          <button class="glass st" data-goto="7" style="--c:var(--sec)"><span class="ico"><svg class="ic"><use href="#i-shield"/></svg></span><span class="m">16–18-OY</span><h3>Kiberxavfsizlik</h3><p>Himoya va yakun</p></button>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Tartib tasodifiy emas: har bosqich oldingisiga quriladi. Kartani bossangiz o'sha bo'limga qaytadi — savol berilsa shunday ko'rsating.</aside>
+    </section>
+
+    <!-- ═══ 12 DEMO DAY ═══ -->
+    <section class="slide" data-ac="nu" aria-label="Demo Day">
+      <div class="frame">
+        <div class="head center">
+          <p class="eyebrow" data-a style="--d:0">Demo Day</p>
+          <h2 class="t" data-a style="--d:1">3 marta — <span class="grad">sahnada</span></h2>
+        </div>
+        <div class="spot" data-a style="--d:2" aria-hidden="true">
+          <span class="beam b1"></span><span class="beam b2"></span>
+          <div class="kid"><div class="screen">Mening loyiham</div></div>
+          <div class="claps"><span>👏</span><span>👏</span><span>👏</span><span>👏</span><span>👏</span><span>👏</span></div>
+          <div class="floor"></div>
+        </div>
+        <div class="tickets" data-a style="--d:3;margin-top:14px">
+          <div class="glass ticket" style="--c:var(--fe)"><span class="m">3</span><span><b>Sayt va algoritm</b><small>3-oy</small></span></div>
+          <div class="glass ticket" style="--c:var(--be)"><span class="m">9</span><span><b>Telegram bot</b><small>9-oy</small></span></div>
+          <div class="glass ticket" style="--c:var(--sec)"><span class="m">18</span><span><b>Final Demo Day</b><small>18-oy</small></span></div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Demo Day — o'quvchi o'z loyihasini sahnada, ota-onalar oldida taqdim etadi. Bu kod yozish qadar muhim ko'nikma: fikringni aniq aytish.</aside>
+    </section>
+
+    <!-- ═══ 13 KIM UCHUN ═══ -->
+    <section class="slide" data-ac="nu" aria-label="Kim uchun">
+      <div class="frame">
+        <div class="head">
+          <p class="eyebrow" data-a style="--d:0">Savollar</p>
+          <h2 class="t" data-a style="--d:1">Kim <span class="grad">qatnasha oladi?</span></h2>
+        </div>
+        <div class="facts" data-a style="--d:2">
+          <div class="glass fact" style="--ac:var(--fe)"><span class="ico"><svg class="ic"><use href="#i-user"/></svg></span><b>11–16 yosh</b><small>Maktab darslaridan keyin</small></div>
+          <div class="glass fact" style="--ac:var(--be)"><span class="ico"><svg class="ic"><use href="#i-check"/></svg></span><b>Tajriba shart emas</b><small>Noldan boshlaymiz</small></div>
+          <div class="glass fact" style="--ac:var(--ai)"><span class="ico"><svg class="ic"><use href="#i-play"/></svg></span><b>Har dars 1,5 soat</b><small>Oyiga 12 dars</small></div>
+          <div class="glass fact" style="--ac:var(--sec)"><span class="ico"><svg class="ic"><use href="#i-code"/></svg></span><b>Kompyuterda amaliyot</b><small>Har darsda o'zing yozasan</small></div>
+        </div>
+        <div class="glass pad" data-a style="--d:3;margin-top:14px">
+          <p class="lede" style="max-width:none">Ingliz tili yoki matematikada a'lo bo'lish shart emas — <span class="mark">qiziqish yetarli.</span></p>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Eng ko'p beriladigan savollar shu slaydda. Qolganlari: guruh hajmi, jadval, to'lov — ularni og'zaki ayting yoki maktab ma'muriyatiga alohida bering.</aside>
+    </section>
+
+    <!-- ═══ 14 VIKTORINA ═══ -->
+    <section class="slide" data-ac="ai" aria-label="IT viktorina">
+      <div class="frame">
+        <div class="head center">
+          <p class="eyebrow" data-a style="--d:0">Viktorina</p>
+          <h2 class="t" data-a style="--d:1">Sinovdan <span class="grad">o'tasanmi?</span></h2>
+        </div>
+        <div class="glass pad quiz" data-scene="quiz" data-a style="--d:2">
+          <div class="qtop">
+            <span class="tag ac" data-qn>1 / 4</span>
+            <span class="tag" data-qscore>To'g'ri javob: 0</span>
+          </div>
+          <h3 class="qq" data-qq></h3>
+          <div class="qopts" data-qopts></div>
+          <p class="qfact" data-qfact hidden></p>
+          <button class="btn sm" data-qnext hidden>Keyingi savol <svg class="ic"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zal bilan birga o'ynang: javobni qo'l ko'tarib tanlashsin, keyin bosing. To'g'ri javob topganlarga kichik sovg'a bering — shundan keyin yozilish slaydiga o'ting.</aside>
+    </section>
+
+    <!-- ═══ 15 YOZILISH ═══ -->
+    <section class="slide" data-ac="fe" aria-label="Yozilish">
+      <div class="frame">
+        <div class="head center">
+          <p class="eyebrow" data-a style="--d:0">Keyingi qadam</p>
+          <h2 class="t" data-a style="--d:1">Birinchi dars — <span class="grad">bepul</span></h2>
+        </div>
+        <div class="steps" data-a style="--d:2">
+          <div class="glass step"><span class="n">1</span><b>Ro'yxatdan o'tasan</b><small>Telefon yoki Telegram orqali</small></div>
+          <div class="glass step"><span class="n">2</span><b>Probniy darsga kelasan</b><small>Bepul, 1,5 soat</small></div>
+          <div class="glass step"><span class="n">3</span><b>O'z sahifangni yasaysan</b><small>Birinchi darsdayoq</small></div>
+        </div>
+
+        <!-- ═══ SHU YERNI TO'LDIRING: telefon, Telegram va manzil ═══ -->
+        <div class="contact glass pad" data-a style="--d:3">
+          <div class="qr" aria-hidden="true"><svg class="ic"><use href="#i-globe"/></svg><span>QR kod<br>shu yerga</span></div>
+          <div class="clines">
+            <div><svg class="ic"><use href="#i-phone"/></svg><b>+998 __ ___ __ __</b></div>
+            <div><svg class="ic"><use href="#i-send"/></svg><b>@pdp_junior</b></div>
+            <div><svg class="ic"><use href="#i-globe"/></svg><b>maktab.pdpjunior.uz</b></div>
+          </div>
+          <div class="stats" data-scene="count">
+            <div class="glass stat"><div class="num" data-count="18">0</div><span>OY</span></div>
+            <div class="glass stat"><div class="num" data-count="216">0</div><span>DARS</span></div>
+            <div class="glass stat"><div class="num" data-count="4">0</div><span>YO'NALISH</span></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Ro'yxat varaqasini shu yerda aylantiring yoki QR'ni ko'rsating. Yakuniy jumla: "Bugun bitta taqdimot ko'rdingiz. Probniy darsda esa birinchi sahifangizni o'zingiz yasaysiz."</aside>
+    </section>
+
+  </main>
+
+  <nav class="botbar">
+    <div class="dots" id="dots" role="tablist" aria-label="Slaydlar"></div>
+    <div class="navr">
+      <span class="count"><b id="curN">01</b> / <span id="totN">15</span></span>
+      <button class="tool" id="prev" aria-label="Oldingi"><svg class="ic"><use href="#i-prev"/></svg></button>
+      <button class="tool" id="next" aria-label="Keyingi"><svg class="ic"><use href="#i-next"/></svg></button>
+    </div>
+  </nav>
+
+  <div class="ov" id="ov" aria-hidden="true">
+    <p class="eyebrow">Barcha slaydlar</p>
+    <div class="ovgrid" id="ovgrid"></div>
+  </div>
+</div>
+
+<script src="assets/js/deck.js"></script>
+<script src="assets/js/scenes-fe.js"></script>
+<script src="assets/js/scenes-be.js"></script>
+<script src="assets/js/scenes-ai-sec.js"></script>
+<script src="assets/js/scenes-school.js"></script>
+<script>PDP.start();</script>
+</body>
+</html>

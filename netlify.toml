@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Fayl nomlarida versiya yo'q, shuning uchun brauzer har safar yangilanganini tekshiradi.
+# (Oldingi "immutable" sozlamasi yangilangan CSS/JS'ni bir yil eski holida qoldirardi.)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

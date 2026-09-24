@@ -1,0 +1,65 @@
+/* ============================================================
+   Maktablar uchun taqdimot — qo'shimcha bo'laklar
+   (viktorina, "kim qatnasha oladi", yozilish qadamlari, kontakt)
+   ============================================================ */
+
+/* ══════════ 13 kim qatnasha oladi ══════════ */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.5vw,18px)}
+@media(max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.facts{grid-template-columns:1fr}}
+.fact{padding:clamp(16px,2vw,24px);border-radius:22px;display:flex;flex-direction:column;gap:10px}
+.fact .ico{width:clamp(46px,5vw,58px);height:clamp(46px,5vw,58px);border-radius:16px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(145deg,var(--ac),color-mix(in srgb,var(--ac) 55%,#fff))}
+.fact .ico .ic{font-size:clamp(22px,2.6vw,28px)}
+.fact b{font-family:var(--display);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.15}
+.fact small{color:var(--ink-mute);font-size:clamp(.8rem,1vw,.92rem)}
+
+/* ══════════ 14 viktorina ══════════ */
+.quiz{display:flex;flex-direction:column;gap:clamp(12px,1.8vh,20px);max-width:900px;margin:0 auto;width:100%}
+.qtop{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qq{font-size:clamp(1.15rem,2.2vw,1.75rem);line-height:1.2}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.qopts{grid-template-columns:1fr}}
+.qopt{display:flex;align-items:center;gap:12px;text-align:left;cursor:pointer;padding:14px 16px;border-radius:16px;
+  border:2px solid var(--line);background:rgba(255,255,255,.7);font-size:clamp(.92rem,1.3vw,1.08rem);font-weight:550;
+  transition:transform .3s var(--ease),border-color .3s,background .3s}
+.qopt:hover{transform:translateY(-3px);border-color:var(--ac-line)}
+.qopt .mk{width:28px;height:28px;border-radius:9px;flex:none;display:grid;place-items:center;font-family:var(--mono);
+  font-weight:700;font-size:.8rem;background:color-mix(in srgb,var(--ac) 12%,#fff);color:var(--ac)}
+.qopt .mk .ic{font-size:16px}
+.qopt[data-state="ok"]{border-color:#1BAA6A;background:color-mix(in srgb,#1BAA6A 10%,#fff)}
+.qopt[data-state="ok"] .mk{background:#1BAA6A;color:#fff}
+.qopt[data-state="no"]{border-color:var(--sec);background:color-mix(in srgb,var(--sec) 10%,#fff)}
+.qopt[data-state="no"] .mk{background:var(--sec);color:#fff}
+.qopt[disabled]{cursor:default;transform:none}
+.qfact{font-size:clamp(.88rem,1.15vw,1rem);color:var(--ink-2);border-left:4px solid var(--ac);padding:10px 14px;
+  background:color-mix(in srgb,var(--ac) 7%,rgba(255,255,255,.6));border-radius:0 14px 14px 0}
+.quiz .btn{align-self:flex-end}
+.qdone{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;padding:clamp(10px,2vh,24px) 0}
+.qdone .big-n{font-family:var(--display);font-weight:750;font-size:clamp(2.6rem,6vw,4.4rem);color:var(--ac);line-height:1}
+
+/* ══════════ 15 yozilish ══════════ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.5vw,18px)}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{padding:clamp(16px,2vw,24px);border-radius:22px;display:flex;flex-direction:column;gap:8px}
+.step .n{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;background:var(--ac);
+  font-family:var(--display);font-weight:750;font-size:1.15rem}
+.step b{font-family:var(--display);font-size:clamp(1rem,1.5vw,1.25rem)}
+.step small{color:var(--ink-mute);font-size:clamp(.8rem,1vw,.92rem)}
+
+.contact{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(14px,2.4vw,32px);margin-top:clamp(12px,2.4vh,22px)}
+@media(max-width:900px){.contact{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.contact .qr{width:clamp(110px,13vw,150px);aspect-ratio:1;border-radius:20px;border:3px dashed var(--ac-line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--ac);
+  font-family:var(--mono);font-size:.7rem;line-height:1.35;text-align:center;background:color-mix(in srgb,var(--ac) 6%,#fff)}
+.contact .qr .ic{font-size:26px}
+.clines{display:flex;flex-direction:column;gap:10px}
+.clines div{display:flex;align-items:center;gap:12px}
+.clines .ic{font-size:22px;color:var(--ac);flex:none}
+.clines b{font-family:var(--display);font-weight:650;font-size:clamp(1.05rem,2vw,1.6rem);letter-spacing:-.02em}
+.contact .stats{gap:8px}
+.contact .stat{min-width:92px;padding:12px 14px}
+.contact .stat .num{font-size:clamp(1.4rem,2.6vw,2.1rem)}
+
+/* hidden atributi CSS display'dan ustun turishi kerak (viktorina tugmalari) */
+[hidden]{display:none!important}
