@@ -29,7 +29,7 @@
       tl.at(2300, function () { typing = bubble(chat, "bot typing"); });
       tl.at(3200, function () {
         typing.remove();
-        bubble(chat, "bot", "Salom! Qaysi shahar ob-havosi kerak?");
+        bubble(chat, "bot", "Salom, " + (PDP.kid.name() || "do'stim") + "! Qaysi shahar ob-havosi kerak?");
         kb = document.createElement("div");
         kb.className = "kb";
         ["Toshkent", "Samarqand", "Buxoro", "Andijon"].forEach(function (c) {

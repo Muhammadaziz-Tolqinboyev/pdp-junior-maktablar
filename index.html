@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="assets/css/deck.css">
 <link rel="stylesheet" href="assets/css/scenes.css">
 <link rel="stylesheet" href="assets/css/school.css">
+<link rel="stylesheet" href="assets/css/fx.css">
 </head>
 <body>
 
@@ -61,6 +62,9 @@
   <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></symbol>
   <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 15l-3-3c1-4 5-9 13-9 0 8-5 12-9 13z"/><circle cx="15" cy="9" r="1.8"/></symbol>
   <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 9l3 3-3 3M12 15h6"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9h3l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9h3l5-4v14l-5-4H4z"/><path d="M17 10l4 4M21 10l-4 4"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M18 14h.01M9 14h6"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3"/></symbol>
 </svg>
 
@@ -75,6 +79,7 @@
     <div class="tools">
       <button class="tool opt" id="btnNotes" aria-pressed="false" aria-label="Ustoz izohlari" title="Izohlar (T)"><svg class="ic"><use href="#i-notes"/></svg></button>
       <button class="tool opt" id="btnGrid" aria-label="Barcha slaydlar" title="Slaydlar (O)"><svg class="ic"><use href="#i-grid"/></svg></button>
+      <button class="tool mute" id="btnSound" aria-pressed="false" aria-label="Ovoz" title="Ovoz (S)"><svg class="ic on-i"><use href="#i-sound"/></svg><svg class="ic off-i"><use href="#i-mute"/></svg></button>
       <button class="tool" id="btnFs" aria-label="To'liq ekran" title="To'liq ekran (F)"><svg class="ic"><use href="#i-full"/></svg></button>
     </div>
   </header>
@@ -86,11 +91,15 @@
       <div class="frame split wide-l">
         <div>
           <p class="eyebrow" data-a style="--d:0">PDP Junior · 11–16 yosh</p>
-          <h1 class="big" data-a style="--d:1;margin-top:14px">Telefoningdagi hamma narsani<br><span class="grad">kimdir yozgan</span></h1>
-          <p class="lede" data-a style="--d:2;margin-top:20px">Bugun ko'ramiz: buni qanday qilib <b>sen ham</b> yoza olasan.</p>
-          <div class="row" data-a style="--d:3;margin-top:28px">
+          <h1 class="big" data-a style="--d:1;margin-top:14px">Bugun sen<br><span class="type-line" data-type></span></h1>
+          <p class="lede" data-a style="--d:2;margin-top:20px">Faqat tomosha qilmaysan — o'zing bosasan, yozasan va yasaysan.</p>
+          <div class="namebox" data-scene="hello" data-a style="--d:3;margin-top:24px">
+            <input type="text" id="kidName" maxlength="16" placeholder="Isming nima?" autocomplete="off" aria-label="Isming">
+            <span class="hi"><svg class="ic"><use href="#i-heart"/></svg>Salom, <span data-kid>do'stim</span>!</span>
+          </div>
+          <div class="row" data-a style="--d:4;margin-top:22px">
             <button class="btn" data-goto="1">Boshladik <svg class="ic"><use href="#i-arrow"/></svg></button>
-            <button class="btn ghost" data-goto="14">Yozilish</button>
+            <button class="btn ghost" data-goto="16">Yozilish</button>
           </div>
         </div>
         <div class="hero" data-a style="--d:2" aria-hidden="true">
@@ -153,20 +162,26 @@
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>1</b><span>Frontend · 1–6-oy</span></span>
-          <h2 class="t" data-a style="--d:1">Sayt shunday <span class="grad">quriladi</span></h2>
+          <h2 class="t" data-a style="--d:1">Klaviaturani bos — <span class="grad">kodni sen yozasan</span></h2>
         </div>
-        <div class="glass player" data-scene="feBuild" data-a style="--d:2">
+        <div class="glass player" data-scene="typeAlong" data-a style="--d:2">
           <div class="pl-screen">
             <div class="ed"><div class="ed-bar"><i></i><i></i><i></i><span>index.html</span></div><pre data-code></pre></div>
             <div class="bw"><div class="bw-bar"><i></i><i></i><i></i><span>mening-saytim.netlify.app</span></div>
-              <div class="bw-body"><div class="site" data-site><h4 data-h></h4><p data-p></p><span class="like" data-like><svg class="ic"><use href="#i-heart"/></svg><span data-n>0</span></span></div></div>
+              <div class="bw-body"><p class="ghost" data-ghost>Bu yerda sahifang paydo bo'ladi</p><div class="site" data-site><h4 data-h></h4><p data-p></p><span class="like" data-like><svg class="ic"><use href="#i-heart"/></svg><span data-n>0</span></span></div></div>
             </div>
           </div>
           <div class="pl-ctrl">
-            <button class="pl-btn" aria-label="Qayta ko'rish"><svg class="ic"><use href="#i-replay"/></svg></button>
-            <div class="pl-bar"><i></i></div>
+            <button class="pl-btn" aria-label="Boshidan"><svg class="ic"><use href="#i-replay"/></svg></button>
+            <div class="kbd-hint">
+              <svg class="ic" style="font-size:22px;color:var(--ac)"><use href="#i-keyboard"/></svg>
+              <span class="keycap" data-cap>Istalgan tugma</span>
+              <span data-say>bosib tur — kod o'zi yoziladi</span>
+            </div>
+            <div class="typed-meter"><i data-meter></i></div>
             <div class="pl-steps"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
           </div>
+          <div class="big-done" data-done><svg class="ic"><use href="#i-check"/></svg>Sen sayt yozding!</div>
         </div>
       </div>
       <aside class="tnote" data-note hidden><b>Ustoz uchun</b>HTML — skelet, CSS — kiyim, JavaScript — harakat. Birinchi oyning oxirida o'quvchining sahifasi internetda o'z havolasi bilan turadi.</aside>
@@ -265,6 +280,11 @@
             <p class="small" style="margin-top:16px">Buzish uchun kerak bo'lgan vaqt</p>
             <p class="pwtime" data-time>—</p>
             <p class="small" data-hint style="margin-top:10px"></p>
+            <div class="presets" data-presets>
+              <button type="button">12345</button>
+              <button type="button">aziza2010</button>
+              <button type="button">Qora$olim_7</button>
+            </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:12px" data-a style="--d:3">
             <div class="glass shield"><svg class="ic"><use href="#i-shield"/></svg><b>O'zingni himoya qilishni o'rganasan</b></div>
@@ -406,12 +426,57 @@
       <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zal bilan birga o'ynang: javobni qo'l ko'tarib tanlashsin, keyin bosing. To'g'ri javob topganlarga kichik sovg'a bering — shundan keyin yozilish slaydiga o'ting.</aside>
     </section>
 
-    <!-- ═══ 15 YOZILISH ═══ -->
+    <!-- ═══ 15 QAYSI YO'NALISH ═══ -->
+    <section class="slide" data-ac="ai" aria-label="Qaysi yo'nalish senga mos?">
+      <div class="frame">
+        <div class="head center">
+          <p class="eyebrow" data-a style="--d:0">Mini-test</p>
+          <h2 class="t" data-a style="--d:1">Qaysi yo'nalish <span class="grad">senga mos?</span></h2>
+        </div>
+        <div class="glass pad ctest" data-scene="career" data-a style="--d:2">
+          <div class="qtop">
+            <span class="tag ac" data-cn>1 / 3</span>
+            <span class="counter-pill"><svg class="ic"><use href="#i-target"/></svg>3 ta savol</span>
+          </div>
+          <h3 class="qq" data-cq></h3>
+          <div class="copts" data-copts></div>
+          <button class="btn sm" data-cagain hidden>Yana urinib ko'rish <svg class="ic"><use href="#i-replay"/></svg></button>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zalda ovoz berdirib o'ynang: "kim birinchi javobni tanlaydi?". Natija chiqqach ayting — kursda to'rtala yo'nalish ham o'tiladi, bu shunchaki qaysi biri ko'proq yoqishini ko'rsatadi.</aside>
+    </section>
+
+    <!-- ═══ 16 BUGUNGI NATIJA ═══ -->
+    <section class="slide" data-ac="nu" aria-label="Bugungi natijang">
+      <div class="frame">
+        <div class="head center">
+          <p class="eyebrow" data-a style="--d:0">Natija</p>
+          <h2 class="t" data-a style="--d:1">Bugun nima <span class="grad">qilding?</span></h2>
+        </div>
+        <div class="glass pad card-res" data-scene="result" data-a style="--d:2">
+          <div class="res-name"><span data-kid>Do'stim</span>, mana bugungi natijang:</div>
+          <div class="res-grid">
+            <div class="glass res-item"><svg class="ic"><use href="#i-game"/></svg><b data-r="game">—</b><small>O'yin ochko</small></div>
+            <div class="glass res-item"><svg class="ic"><use href="#i-spark"/></svg><b data-r="quiz">—</b><small>Viktorina</small></div>
+            <div class="glass res-item"><svg class="ic"><use href="#i-shield"/></svg><b data-r="phish">—</b><small>Fishing</small></div>
+            <div class="glass res-item"><svg class="ic"><use href="#i-target"/></svg><b data-r="track">—</b><small>Yo'nalish</small></div>
+          </div>
+          <p class="lede" data-msg style="text-align:center"></p>
+          <div class="row" style="justify-content:center">
+            <button class="btn" data-goto="16">Yozilish <svg class="ic"><use href="#i-arrow"/></svg></button>
+            <button class="btn ghost" data-goto="0">Boshidan</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Bu slayd o'quvchi bugun bosgan hamma narsani yig'ib ko'rsatadi. Bo'sh kataklar bo'lsa — o'sha slaydga qaytib, zaldan yana bir bolani chaqiring.</aside>
+    </section>
+
+    <!-- ═══ 17 YOZILISH ═══ -->
     <section class="slide" data-ac="fe" aria-label="Yozilish">
       <div class="frame">
         <div class="head center">
           <p class="eyebrow" data-a style="--d:0">Keyingi qadam</p>
-          <h2 class="t" data-a style="--d:1">Birinchi dars — <span class="grad">bepul</span></h2>
+          <h2 class="t" data-a style="--d:1"><span data-kid>Do'stim</span>, birinchi dars — <span class="grad">bepul</span></h2>
         </div>
         <div class="steps" data-a style="--d:2">
           <div class="glass step"><span class="n">1</span><b>Ro'yxatdan o'tasan</b><small>Telefon yoki Telegram orqali</small></div>
@@ -442,7 +507,7 @@
   <nav class="botbar">
     <div class="dots" id="dots" role="tablist" aria-label="Slaydlar"></div>
     <div class="navr">
-      <span class="count"><b id="curN">01</b> / <span id="totN">15</span></span>
+      <span class="count"><b id="curN">01</b> / <span id="totN">17</span></span>
       <button class="tool" id="prev" aria-label="Oldingi"><svg class="ic"><use href="#i-prev"/></svg></button>
       <button class="tool" id="next" aria-label="Keyingi"><svg class="ic"><use href="#i-next"/></svg></button>
     </div>
@@ -455,6 +520,7 @@
 </div>
 
 <script src="assets/js/deck.js"></script>
+<script src="assets/js/fx.js"></script>
 <script src="assets/js/scenes-fe.js"></script>
 <script src="assets/js/scenes-be.js"></script>
 <script src="assets/js/scenes-ai-sec.js"></script>

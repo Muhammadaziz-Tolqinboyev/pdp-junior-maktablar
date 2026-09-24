@@ -107,6 +107,9 @@
     }
     swatches(colors, PAL, false, function (c) { color = c; });
     swatches(emojis, EMO, true, function (e) { emo = e; });
+    if (PDP.kid.name()) name.value = PDP.kid.name();
+    name.addEventListener("input", function () { PDP.kid.set("name", name.value.trim().slice(0, 16)); });
+    PDP.kid.onChange(function (k) { if (k.name && k.name !== name.value) { name.value = k.name; draw(); } });
     name.addEventListener("input", draw);
     size.addEventListener("input", draw);
     draw();
@@ -216,7 +219,10 @@
         items.forEach(function (it) { it.y += it.v * dt; it.rot += dt * 2; });
         items = items.filter(function (it) {
           var hit = it.y > H - 58 && it.y < H - 18 && Math.abs(it.x - basket.x) < basket.w / 2 + 10;
-          if (hit) score = Math.max(0, score + (it.bug ? -3 : 1));
+          if (hit) {
+            score = Math.max(0, score + (it.bug ? -3 : 1));
+            if (it.bug) PDP.sound.no(); else PDP.sound.point();
+          }
           return !hit && it.y < H + 30;
         });
         sEl.textContent = score; tEl.textContent = Math.max(0, Math.ceil(left));
@@ -228,6 +234,8 @@
     function end() {
       running = false; items = [];
       best = Math.max(best, score);
+      PDP.kid.set("game", score);
+      if (score > 0) { PDP.sound.win(); PDP.confetti(80, innerWidth * .32, innerHeight * .5); }
       ovt.textContent = "Ochko: " + score;
       ovs.textContent = "Rekord: " + best + " · Qizil xatolardan (bug) qoching!";
       startBtn.lastChild.textContent = "Yana o'ynash";
