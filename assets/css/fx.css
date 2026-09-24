@@ -75,3 +75,26 @@ body.has-kid .hi{display:inline-flex}
 .presets button:hover{border-color:var(--ac);color:var(--ac);transform:translateY(-2px)}
 
 .ghost{color:var(--ink-faint);font-size:clamp(.85rem,1.1vw,.98rem);text-align:center}
+
+/* ══════════ vaqt hisoblagichi va rejim tugmasi ══════════ */
+.clock{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:100px;cursor:pointer;
+  background:rgba(255,255,255,.62);border:1px solid var(--glass-brd);box-shadow:var(--glass-shadow);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);font-family:var(--mono);
+  transition:background .4s var(--ease),border-color .4s var(--ease)}
+.clock .ic{font-size:16px;color:var(--ac)}
+.clock b{font-size:.98rem;font-weight:700;font-variant-numeric:tabular-nums}
+.clock span{font-size:.72rem;color:var(--ink-faint)}
+.clock.late{background:color-mix(in srgb,#E0661A 18%,#fff);border-color:#E0661A}
+.clock.late b{color:#B4531A}
+.clock.over{background:color-mix(in srgb,#C9372C 18%,#fff);border-color:#C9372C}
+.clock.over b{color:#C9372C}
+.clock.paused{opacity:.5}
+@media(max-width:700px){.clock span{display:none}}
+@media(max-width:480px){.clock{display:none}}
+
+.tool.mode{width:auto;padding:0 13px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em}
+.tool.mode b{font-weight:700}
+
+.tnote .tbudget{display:inline-block;font-style:normal;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;background:var(--ac);padding:3px 10px;border-radius:100px;margin-bottom:7px}
+.tnote .tbudget.opt{background:var(--ink-faint)}

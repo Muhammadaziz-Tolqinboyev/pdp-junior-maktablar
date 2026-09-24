@@ -62,6 +62,7 @@
   <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></symbol>
   <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 15l-3-3c1-4 5-9 13-9 0 8-5 12-9 13z"/><circle cx="15" cy="9" r="1.8"/></symbol>
   <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 9l3 3-3 3M12 15h6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9h3l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></symbol>
   <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9h3l5-4v14l-5-4H4z"/><path d="M17 10l4 4M21 10l-4 4"/></symbol>
   <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M18 14h.01M9 14h6"/></symbol>
@@ -76,7 +77,9 @@
 
   <header class="topbar">
     <div class="brand"><span class="dot"></span><b>PDP Junior</b><em>Maktablar uchun</em></div>
+    <button class="clock" id="clock" title="Bosing — to'xtatish/davom ettirish, ikki marta — noldan"><svg class="ic"><use href="#i-clock"/></svg><b>0:00</b><span>/ 10:00</span></button>
     <div class="tools">
+      <button class="tool mode" id="btnMode" aria-pressed="true" title="10 daqiqalik yo'l (M)"><b>10 daq</b></button>
       <button class="tool opt" id="btnNotes" aria-pressed="false" aria-label="Ustoz izohlari" title="Izohlar (T)"><svg class="ic"><use href="#i-notes"/></svg></button>
       <button class="tool opt" id="btnGrid" aria-label="Barcha slaydlar" title="Slaydlar (O)"><svg class="ic"><use href="#i-grid"/></svg></button>
       <button class="tool mute" id="btnSound" aria-pressed="false" aria-label="Ovoz" title="Ovoz (S)"><svg class="ic on-i"><use href="#i-sound"/></svg><svg class="ic off-i"><use href="#i-mute"/></svg></button>
@@ -87,7 +90,7 @@
   <main class="slides" id="slides">
 
     <!-- ═══ 01 MUQOVA ═══ -->
-    <section class="slide" data-ac="nu" aria-label="Muqova">
+    <section class="slide" data-sec="40" data-ac="nu" aria-label="Muqova">
       <div class="frame split wide-l">
         <div>
           <p class="eyebrow" data-a style="--d:0">PDP Junior · 11–16 yosh</p>
@@ -110,11 +113,11 @@
           <div class="glass float f4"><svg class="ic"><use href="#i-spark"/></svg>AI</div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zaldan so'rang: "Kim telefonda o'yin o'ynaydi?" — deyarli hamma qo'l ko'taradi. "Kim shu o'yinni o'zi yasab ko'rgan?" — mana shu farq haqida gaplashamiz.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 0:40</em>Hozir <b>10 daqiqalik yo'l</b> yoqilgan: 11 ta slayd, yuqoridagi soat har slayd uchun chegarani ko'rsatadi. Vaqt ko'proq bo'lsa — <b>M</b> tugmasi bilan to'liq versiyaga (17 slayd) o'ting. Zaldan so'rang: "Kim telefonda o'yin o'ynaydi?" — deyarli hamma qo'l ko'taradi. "Kim shu o'yinni o'zi yasab ko'rgan?" — mana shu farq haqida gaplashamiz.</aside>
     </section>
 
     <!-- ═══ 02 HAMMASI KOD ═══ -->
-    <section class="slide" data-ac="nu" aria-label="Qaysi biri kod?">
+    <section class="slide" data-sec="60" data-ac="nu" aria-label="Qaysi biri kod?">
       <div class="frame">
         <div class="head">
           <p class="eyebrow" data-a style="--d:0">Savol</p>
@@ -129,11 +132,11 @@
           <button class="flip" style="--c1:#F59E0B;--c2:#E0661A"><div class="fi"><div class="face front glass"><span class="pic"><svg class="ic"><use href="#i-face"/></svg></span><b>Yuz bilan ochish</b></div><div class="face back"><svg class="ic"><use href="#i-lock"/></svg>Kamera yuzingni namunaga solishtiradi</div></div></button>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Kartalarni o'quvchilarga bostiring. Javob: hammasi. Xulosa: "Bularning hech birini sehr yaratmagan — odam yozgan. Demak, o'rganish mumkin."</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 1:00</em>Kartalarni o'quvchilarga bostiring. Javob: hammasi. Xulosa: "Bularning hech birini sehr yaratmagan — odam yozgan. Demak, o'rganish mumkin."</aside>
     </section>
 
     <!-- ═══ 03 JONLI DEMO ═══ -->
-    <section class="slide" data-ac="fe" aria-label="Birinchi sahifang">
+    <section class="slide" data-opt data-ac="fe" aria-label="Birinchi sahifang">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>1</b><span>Sinab ko'r</span></span>
@@ -154,11 +157,11 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Bitta o'quvchini chaqiring: ismini yozsin, rang tanlasin. Pastdagi kod qatorini ko'rsating — "sen tugma bosding, kompyuter shu kodni yozdi. Darsda buni o'zing yozasan".</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget opt">Qo'shimcha slayd</em>Bitta o'quvchini chaqiring: ismini yozsin, rang tanlasin. Pastdagi kod qatorini ko'rsating — "sen tugma bosding, kompyuter shu kodni yozdi. Darsda buni o'zing yozasan".</aside>
     </section>
 
     <!-- ═══ 04 SAYT QURILISHI ═══ -->
-    <section class="slide" data-ac="fe" aria-label="Sayt shunday quriladi">
+    <section class="slide" data-sec="90" data-ac="fe" aria-label="Sayt shunday quriladi">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>1</b><span>Frontend · 1–6-oy</span></span>
@@ -184,11 +187,11 @@
           <div class="big-done" data-done><svg class="ic"><use href="#i-check"/></svg>Sen sayt yozding!</div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>HTML — skelet, CSS — kiyim, JavaScript — harakat. Birinchi oyning oxirida o'quvchining sahifasi internetda o'z havolasi bilan turadi.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 1:30</em>HTML — skelet, CSS — kiyim, JavaScript — harakat. Birinchi oyning oxirida o'quvchining sahifasi internetda o'z havolasi bilan turadi.</aside>
     </section>
 
     <!-- ═══ 05 O'YIN ═══ -->
-    <section class="slide" data-ac="fe" aria-label="O'yin yasash">
+    <section class="slide" data-sec="75" data-ac="fe" aria-label="O'yin yasash">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>1</b><span>6-oy · O'yinlar</span></span>
@@ -212,11 +215,11 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zaldan bitta o'quvchini chaqirib 30 soniya o'ynating, ochkosini e'lon qiling. Eng ko'p ochko olganga kichik sovg'a — zal qiziydi.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 1:15</em>Zaldan bitta o'quvchini chaqirib 30 soniya o'ynating, ochkosini e'lon qiling. Eng ko'p ochko olganga kichik sovg'a — zal qiziydi.</aside>
     </section>
 
     <!-- ═══ 06 TELEGRAM BOT ═══ -->
-    <section class="slide" data-ac="be" aria-label="Telegram bot">
+    <section class="slide" data-sec="60" data-ac="be" aria-label="Telegram bot">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>2</b><span>Python · 9-oy</span></span>
@@ -239,11 +242,11 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>O'ngdagi kod — botning "miyasi", ishlayotgan qatori yonib turadi. 9-oyda har bir o'quvchi o'z botini yozadi: dars jadvali, ob-havo yoki test boti.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 1:00</em>O'ngdagi kod — botning "miyasi", ishlayotgan qatori yonib turadi. 9-oyda har bir o'quvchi o'z botini yozadi: dars jadvali, ob-havo yoki test boti.</aside>
     </section>
 
     <!-- ═══ 07 AI ═══ -->
-    <section class="slide" data-ac="ai" aria-label="AI bilan ishlash">
+    <section class="slide" data-opt data-ac="ai" aria-label="AI bilan ishlash">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>3</b><span>Sun'iy intellekt · 13–15-oy</span></span>
@@ -263,11 +266,11 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Chapdagilarni birma-bir bosing. Bir xil AI, lekin so'rov aniqlashgani sari javob foydali bo'ladi. Kursda AI'ni uy vazifasini ko'chirish uchun emas, tezroq o'rganish uchun ishlatishni o'rgatamiz.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget opt">Qo'shimcha slayd</em>Chapdagilarni birma-bir bosing. Bir xil AI, lekin so'rov aniqlashgani sari javob foydali bo'ladi. Kursda AI'ni uy vazifasini ko'chirish uchun emas, tezroq o'rganish uchun ishlatishni o'rgatamiz.</aside>
     </section>
 
     <!-- ═══ 08 PAROL ═══ -->
-    <section class="slide" data-ac="sec" aria-label="Parol kuchi">
+    <section class="slide" data-opt data-ac="sec" aria-label="Parol kuchi">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>4</b><span>Kiberxavfsizlik · 16–18-oy</span></span>
@@ -293,11 +296,11 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zaldan parol turini aytdiring (o'z parolini emas!) va yozib ko'rsating. Maktab o'quvchilarining aksariyati zaif parol ishlatadi — bu ularga darhol foydali bilim.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget opt">Qo'shimcha slayd</em>Zaldan parol turini aytdiring (o'z parolini emas!) va yozib ko'rsating. Maktab o'quvchilarining aksariyati zaif parol ishlatadi — bu ularga darhol foydali bilim.</aside>
     </section>
 
     <!-- ═══ 09 FISHING ═══ -->
-    <section class="slide" data-ac="sec" aria-label="Soxta xabarni topish">
+    <section class="slide" data-sec="60" data-ac="sec" aria-label="Soxta xabarni topish">
       <div class="frame">
         <div class="head">
           <span class="badge" data-a style="--d:0"><b>4</b><span>17-oy · Fishing</span></span>
@@ -323,11 +326,11 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Ovoz berdiring: qaysi biri soxta? Keyin bosing. "Bu tuzoqlar kattalarni ham aldaydi — kursdan keyin sen oilangni himoya qila olasan."</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 1:00</em>Ovoz berdiring: qaysi biri soxta? Keyin bosing. "Bu tuzoqlar kattalarni ham aldaydi — kursdan keyin sen oilangni himoya qila olasan."</aside>
     </section>
 
     <!-- ═══ 10 NIMA YASAYSAN ═══ -->
-    <section class="slide" data-ac="nu" aria-label="Nima yasaysan">
+    <section class="slide" data-sec="40" data-ac="nu" aria-label="Nima yasaysan">
       <div class="frame">
         <div class="head">
           <p class="eyebrow" data-a style="--d:0">Natija</p>
@@ -342,11 +345,11 @@
           <div class="glass tile" style="--c:var(--sec)"><span class="ico"><svg class="ic"><use href="#i-shield"/></svg></span><b>Xavfsizlik ko'nikmasi</b><small>O'zingni va oilangni himoya qilasan</small></div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Bu — kursni to'liq tugatgan o'quvchining natijasi. Har bir loyiha jonli havola bo'ladi: telefonda ochib do'stiga yoki ota-onasiga ko'rsata oladi.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 0:40</em>Bu — kursni to'liq tugatgan o'quvchining natijasi. Har bir loyiha jonli havola bo'ladi: telefonda ochib do'stiga yoki ota-onasiga ko'rsata oladi.</aside>
     </section>
 
     <!-- ═══ 11 YO'L XARITASI ═══ -->
-    <section class="slide" data-ac="nu" aria-label="18 oylik yo'l">
+    <section class="slide" data-sec="40" data-ac="nu" aria-label="18 oylik yo'l">
       <div class="frame">
         <div class="head">
           <p class="eyebrow" data-a style="--d:0">Dastur tuzilishi</p>
@@ -360,11 +363,11 @@
           <button class="glass st" data-goto="7" style="--c:var(--sec)"><span class="ico"><svg class="ic"><use href="#i-shield"/></svg></span><span class="m">16–18-OY</span><h3>Kiberxavfsizlik</h3><p>Himoya va yakun</p></button>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Tartib tasodifiy emas: har bosqich oldingisiga quriladi. Kartani bossangiz o'sha bo'limga qaytadi — savol berilsa shunday ko'rsating.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 0:40</em>Tartib tasodifiy emas: har bosqich oldingisiga quriladi. Kartani bossangiz o'sha bo'limga qaytadi — savol berilsa shunday ko'rsating.</aside>
     </section>
 
     <!-- ═══ 12 DEMO DAY ═══ -->
-    <section class="slide" data-ac="nu" aria-label="Demo Day">
+    <section class="slide" data-opt data-ac="nu" aria-label="Demo Day">
       <div class="frame">
         <div class="head center">
           <p class="eyebrow" data-a style="--d:0">Demo Day</p>
@@ -382,11 +385,11 @@
           <div class="glass ticket" style="--c:var(--sec)"><span class="m">18</span><span><b>Final Demo Day</b><small>18-oy</small></span></div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Demo Day — o'quvchi o'z loyihasini sahnada, ota-onalar oldida taqdim etadi. Bu kod yozish qadar muhim ko'nikma: fikringni aniq aytish.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget opt">Qo'shimcha slayd</em>Demo Day — o'quvchi o'z loyihasini sahnada, ota-onalar oldida taqdim etadi. Bu kod yozish qadar muhim ko'nikma: fikringni aniq aytish.</aside>
     </section>
 
     <!-- ═══ 13 KIM UCHUN ═══ -->
-    <section class="slide" data-ac="nu" aria-label="Kim uchun">
+    <section class="slide" data-opt data-ac="nu" aria-label="Kim uchun">
       <div class="frame">
         <div class="head">
           <p class="eyebrow" data-a style="--d:0">Savollar</p>
@@ -402,11 +405,11 @@
           <p class="lede" style="max-width:none">Ingliz tili yoki matematikada a'lo bo'lish shart emas — <span class="mark">qiziqish yetarli.</span></p>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Eng ko'p beriladigan savollar shu slaydda. Qolganlari: guruh hajmi, jadval, to'lov — ularni og'zaki ayting yoki maktab ma'muriyatiga alohida bering.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget opt">Qo'shimcha slayd</em>Eng ko'p beriladigan savollar shu slaydda. Qolganlari: guruh hajmi, jadval, to'lov — ularni og'zaki ayting yoki maktab ma'muriyatiga alohida bering.</aside>
     </section>
 
     <!-- ═══ 14 VIKTORINA ═══ -->
-    <section class="slide" data-ac="ai" aria-label="IT viktorina">
+    <section class="slide" data-opt data-ac="ai" aria-label="IT viktorina">
       <div class="frame">
         <div class="head center">
           <p class="eyebrow" data-a style="--d:0">Viktorina</p>
@@ -423,11 +426,11 @@
           <button class="btn sm" data-qnext hidden>Keyingi savol <svg class="ic"><use href="#i-arrow"/></svg></button>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zal bilan birga o'ynang: javobni qo'l ko'tarib tanlashsin, keyin bosing. To'g'ri javob topganlarga kichik sovg'a bering — shundan keyin yozilish slaydiga o'ting.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget opt">Qo'shimcha slayd</em>Zal bilan birga o'ynang: javobni qo'l ko'tarib tanlashsin, keyin bosing. To'g'ri javob topganlarga kichik sovg'a bering — shundan keyin yozilish slaydiga o'ting.</aside>
     </section>
 
     <!-- ═══ 15 QAYSI YO'NALISH ═══ -->
-    <section class="slide" data-ac="ai" aria-label="Qaysi yo'nalish senga mos?">
+    <section class="slide" data-sec="75" data-ac="ai" aria-label="Qaysi yo'nalish senga mos?">
       <div class="frame">
         <div class="head center">
           <p class="eyebrow" data-a style="--d:0">Mini-test</p>
@@ -443,11 +446,11 @@
           <button class="btn sm" data-cagain hidden>Yana urinib ko'rish <svg class="ic"><use href="#i-replay"/></svg></button>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Zalda ovoz berdirib o'ynang: "kim birinchi javobni tanlaydi?". Natija chiqqach ayting — kursda to'rtala yo'nalish ham o'tiladi, bu shunchaki qaysi biri ko'proq yoqishini ko'rsatadi.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 1:15</em>Zalda ovoz berdirib o'ynang: "kim birinchi javobni tanlaydi?". Natija chiqqach ayting — kursda to'rtala yo'nalish ham o'tiladi, bu shunchaki qaysi biri ko'proq yoqishini ko'rsatadi.</aside>
     </section>
 
     <!-- ═══ 16 BUGUNGI NATIJA ═══ -->
-    <section class="slide" data-ac="nu" aria-label="Bugungi natijang">
+    <section class="slide" data-sec="30" data-ac="nu" aria-label="Bugungi natijang">
       <div class="frame">
         <div class="head center">
           <p class="eyebrow" data-a style="--d:0">Natija</p>
@@ -468,19 +471,19 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Bu slayd o'quvchi bugun bosgan hamma narsani yig'ib ko'rsatadi. Bo'sh kataklar bo'lsa — o'sha slaydga qaytib, zaldan yana bir bolani chaqiring.</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 0:30</em>Bu slayd o'quvchi bugun bosgan hamma narsani yig'ib ko'rsatadi. Bo'sh kataklar bo'lsa — o'sha slaydga qaytib, zaldan yana bir bolani chaqiring.</aside>
     </section>
 
     <!-- ═══ 17 YOZILISH ═══ -->
-    <section class="slide" data-ac="fe" aria-label="Yozilish">
+    <section class="slide" data-sec="30" data-ac="fe" aria-label="Yozilish">
       <div class="frame">
         <div class="head center">
           <p class="eyebrow" data-a style="--d:0">Keyingi qadam</p>
-          <h2 class="t" data-a style="--d:1"><span data-kid>Do'stim</span>, birinchi dars — <span class="grad">bepul</span></h2>
+          <h2 class="t" data-a style="--d:1"><span data-kid>Do'stim</span>, keyingi qadam — <span class="grad">senda</span></h2>
         </div>
         <div class="steps" data-a style="--d:2">
           <div class="glass step"><span class="n">1</span><b>Ro'yxatdan o'tasan</b><small>Telefon yoki Telegram orqali</small></div>
-          <div class="glass step"><span class="n">2</span><b>Probniy darsga kelasan</b><small>Bepul, 1,5 soat</small></div>
+          <div class="glass step"><span class="n">2</span><b>Sinov darsiga kelasan</b><small>1,5 soat, kompyuter bilan</small></div>
           <div class="glass step"><span class="n">3</span><b>O'z sahifangni yasaysan</b><small>Birinchi darsdayoq</small></div>
         </div>
 
@@ -499,7 +502,7 @@
           </div>
         </div>
       </div>
-      <aside class="tnote" data-note hidden><b>Ustoz uchun</b>Ro'yxat varaqasini shu yerda aylantiring yoki QR'ni ko'rsating. Yakuniy jumla: "Bugun bitta taqdimot ko'rdingiz. Probniy darsda esa birinchi sahifangizni o'zingiz yasaysiz."</aside>
+      <aside class="tnote" data-note hidden><b>Ustoz uchun</b><em class="tbudget">VAQT 0:30</em>Ro'yxat varaqasini shu yerda aylantiring yoki QR'ni ko'rsating. Yakuniy jumla: "Bugun bitta taqdimot ko'rdingiz. Probniy darsda esa birinchi sahifangizni o'zingiz yasaysiz."</aside>
     </section>
 
   </main>

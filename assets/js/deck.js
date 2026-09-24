@@ -1,7 +1,9 @@
 /* ============================================================
-   PDP Junior — Probniy dars · slayd dvigateli
-   Sahnalar PDP.scene(nom, {init}) bilan ro'yxatdan o'tadi.
-   Slaydga kirilganda play(), chiqilganda stop() chaqiriladi.
+   PDP Junior — Maktablar uchun · slayd dvigateli
+   · 10 DAQIQALIK YO'L: sukut bo'yicha faqat asosiy slaydlar
+     ko'rsatiladi. "To'liq" tugmasi qo'shimchalarini ham ochadi (M).
+   · Yuqorida vaqt hisoblagichi: har slaydning vaqt chegarasi bor
+     (data-sec), kechikilsa rangi o'zgaradi.
    ============================================================ */
 (function () {
   "use strict";
@@ -19,6 +21,7 @@
 
   var registry = {};
   var slides = [], perSlide = [], cur = -1, enterTimer = 0;
+  var route = [], short = true, targets = [], totalSec = 0;
 
   var PDP = window.PDP = {
     scene: function (name, def) { registry[name] = def; },
@@ -32,7 +35,7 @@
       };
     },
 
-    /* video-pleer: progress chizig'i, qayta ko'rish tugmasi, bosqich yorliqlari */
+    /* video-pleer: progress chizig'i, qayta ko'rish tugmasi, bosqichlar */
     player: function (el, duration, run, reset) {
       var tl = PDP.timeline(), bar = el.querySelector(".pl-bar i"), raf = 0, t0 = 0;
       var steps = [].slice.call(el.querySelectorAll(".pl-steps .tag"));
@@ -63,28 +66,70 @@
     start: start
   };
 
-  function applyAccent(key) {
-    var a = ACCENTS[key] || ACCENTS.nu, r = document.documentElement.style;
-    r.setProperty("--ac", a.c);
-    r.setProperty("--o1", a.o[0]); r.setProperty("--o2", a.o[1]); r.setProperty("--o3", a.o[2]);
+  /* ══════════ 10 daqiqalik yo'l ══════════ */
+  function buildRoute() {
+    route = []; targets = []; totalSec = 0;
+    slides.forEach(function (s, i) {
+      if (short && s.hasAttribute("data-opt")) return;
+      route.push(i);
+      totalSec += parseInt(s.getAttribute("data-sec") || "45", 10);
+      targets[i] = totalSec;
+    });
+  }
+
+  function renderNav() {
+    var dots = $("dots"), ov = $("ovgrid");
+    dots.innerHTML = ""; ov.innerHTML = "";
+    route.forEach(function (idx, pos) {
+      var name = slides[idx].getAttribute("aria-label");
+      var d = document.createElement("button");
+      d.setAttribute("role", "tab");
+      d.setAttribute("aria-label", (pos + 1) + ". " + name);
+      d.addEventListener("click", function () { go(idx); });
+      dots.appendChild(d);
+
+      var o = document.createElement("button");
+      o.className = "glass ovi";
+      o.innerHTML = '<div class="n"></div><div class="x"></div>';
+      o.querySelector(".n").textContent = pad2(pos + 1) + " · " + fmt(parseInt(slides[idx].getAttribute("data-sec") || "45", 10));
+      o.querySelector(".x").textContent = name;
+      o.addEventListener("click", function () { go(idx); closeOv(); });
+      ov.appendChild(o);
+    });
+    $("totN").textContent = pad2(route.length);
+    markCurrent();
+  }
+
+  function markCurrent() {
+    var pos = route.indexOf(cur);
+    [].forEach.call($("dots").children, function (d, k) { d.setAttribute("aria-current", k === pos ? "true" : "false"); });
+    [].forEach.call($("ovgrid").children, function (d, k) { d.setAttribute("aria-current", k === pos ? "true" : "false"); });
+    $("curN").textContent = pos >= 0 ? pad2(pos + 1) : "··";
+    $("bar").style.width = (((pos >= 0 ? pos + 1 : 0) / route.length) * 100).toFixed(2) + "%";
+  }
+
+  /* keyingi / oldingi — faqat yo'ldagi slaydlar bo'ylab */
+  function step(dir) {
+    var pos = route.indexOf(cur), n = route.length, i, next = null;
+    if (pos >= 0) { go(route[(pos + dir + n) % n]); return; }
+    if (dir > 0) { for (i = 0; i < n; i++) if (route[i] > cur) { next = route[i]; break; } }
+    else { for (i = n - 1; i >= 0; i--) if (route[i] < cur) { next = route[i]; break; } }
+    go(next === null ? route[dir > 0 ? 0 : n - 1] : next);
   }
 
   function go(i) {
-    var n = slides.length;
-    i = (i + n) % n;
-    if (i === cur) return;
+    if (i == null || i < 0 || i >= slides.length || i === cur) return;
     if (cur >= 0) perSlide[cur].forEach(function (s) { if (s.stop) s.stop(); });
     slides.forEach(function (s, k) {
       s.classList.toggle("on", k === i);
       s.classList.toggle("past", k < i);
     });
     slides[i].scrollTop = 0;
-    [].forEach.call($("dots").children, function (d, k) { d.setAttribute("aria-current", k === i ? "true" : "false"); });
-    [].forEach.call($("ovgrid").children, function (d, k) { d.setAttribute("aria-current", k === i ? "true" : "false"); });
     applyAccent(slides[i].getAttribute("data-ac"));
-    $("curN").textContent = pad2(i + 1);
-    $("bar").style.width = ((i + 1) / n * 100).toFixed(2) + "%";
+    if (cur === 0 && !clock.running && clock.acc === 0) startClock();
     cur = i;
+    markCurrent();
+    paintClock();
     if (history.replaceState) history.replaceState(null, "", "#" + (i + 1));
     clearTimeout(enterTimer);
     enterTimer = setTimeout(function () {
@@ -92,26 +137,44 @@
     }, 550);
   }
 
+  function applyAccent(key) {
+    var a = ACCENTS[key] || ACCENTS.nu, r = document.documentElement.style;
+    r.setProperty("--ac", a.c);
+    r.setProperty("--o1", a.o[0]); r.setProperty("--o2", a.o[1]); r.setProperty("--o3", a.o[2]);
+  }
+
+  /* ══════════ vaqt hisoblagichi ══════════ */
+  var clock = { acc: 0, t0: 0, running: false, timer: 0 };
+  function elapsed() { return clock.acc + (clock.running ? (Date.now() - clock.t0) / 1000 : 0); }
+  function fmt(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
+  function paintClock() {
+    var el = $("clock");
+    if (!el) return;
+    var e = elapsed(), tgt = targets[cur] || totalSec;
+    el.querySelector("b").textContent = fmt(e);
+    el.querySelector("span").textContent = "/ " + fmt(tgt);
+    el.classList.toggle("late", e > tgt + 8 && e <= totalSec);
+    el.classList.toggle("over", e > totalSec);
+    el.classList.toggle("paused", !clock.running);
+  }
+  function startClock() {
+    clock.t0 = Date.now(); clock.running = true;
+    clearInterval(clock.timer);
+    clock.timer = setInterval(paintClock, 500);
+    paintClock();
+  }
+  function pauseClock() {
+    if (!clock.running) return;
+    clock.acc = elapsed(); clock.running = false;
+    clearInterval(clock.timer); paintClock();
+  }
+  function resetClock() { pauseClock(); clock.acc = 0; paintClock(); }
+
+  /* ══════════ ishga tushirish ══════════ */
   function start() {
     slides = [].slice.call(document.querySelectorAll(".slide"));
-    $("totN").textContent = pad2(slides.length);
 
     slides.forEach(function (s, i) {
-      var name = s.getAttribute("aria-label");
-      var d = document.createElement("button");
-      d.setAttribute("role", "tab");
-      d.setAttribute("aria-label", (i + 1) + ". " + name);
-      d.addEventListener("click", function () { go(i); });
-      $("dots").appendChild(d);
-
-      var o = document.createElement("button");
-      o.className = "glass ovi";
-      o.innerHTML = '<div class="n"></div><div class="x"></div>';
-      o.querySelector(".n").textContent = pad2(i + 1);
-      o.querySelector(".x").textContent = name;
-      o.addEventListener("click", function () { go(i); closeOv(); });
-      $("ovgrid").appendChild(o);
-
       perSlide[i] = [];
       [].forEach.call(s.querySelectorAll("[data-scene]"), function (el) {
         var def = registry[el.getAttribute("data-scene")];
@@ -119,7 +182,11 @@
       });
     });
 
-    /* umumiy: aylanuvchi kartalar va o'tish tugmalari */
+    try { short = localStorage.getItem("pdpMode") !== "full"; } catch (e) {}
+    buildRoute();
+    renderNav();
+    syncModeBtn();
+
     [].forEach.call(document.querySelectorAll(".flip"), function (f) {
       f.addEventListener("click", function () { f.classList.toggle("open"); });
     });
@@ -127,22 +194,26 @@
       el.addEventListener("click", function () { go(parseInt(el.getAttribute("data-goto"), 10)); });
     });
 
-    $("next").addEventListener("click", function () { go(cur + 1); });
-    $("prev").addEventListener("click", function () { go(cur - 1); });
+    $("next").addEventListener("click", function () { step(1); });
+    $("prev").addEventListener("click", function () { step(-1); });
     $("btnGrid").addEventListener("click", toggleOv);
     $("btnFs").addEventListener("click", toggleFs);
     $("btnNotes").addEventListener("click", toggleNotes);
+    $("btnMode").addEventListener("click", toggleMode);
+    $("clock").addEventListener("click", function () { clock.running ? pauseClock() : startClock(); });
+    $("clock").addEventListener("dblclick", resetClock);
 
     document.addEventListener("keydown", function (e) {
       var tag = (e.target && e.target.tagName) || "";
       if (tag === "INPUT" || tag === "TEXTAREA") { if (e.key === "Escape") e.target.blur(); return; }
-      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(cur + 1); }
-      else if (e.key === "ArrowLeft" || e.key === "PageUp") go(cur - 1);
-      else if (e.key === "Home") go(0);
-      else if (e.key === "End") go(slides.length - 1);
+      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); step(1); }
+      else if (e.key === "ArrowLeft" || e.key === "PageUp") step(-1);
+      else if (e.key === "Home") go(route[0]);
+      else if (e.key === "End") go(route[route.length - 1]);
       else if (e.key === "f" || e.key === "F") toggleFs();
       else if (e.key === "o" || e.key === "O") toggleOv();
       else if (e.key === "t" || e.key === "T") toggleNotes();
+      else if (e.key === "m" || e.key === "M") toggleMode();
       else if (e.key === "Escape") closeOv();
     });
 
@@ -154,11 +225,25 @@
     document.addEventListener("touchend", function (e) {
       if (skip) return;
       var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
-      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6) go(dx < 0 ? cur + 1 : cur - 1);
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6) step(dx < 0 ? 1 : -1);
     }, { passive: true });
 
     var h = parseInt((location.hash || "").slice(1), 10);
     go(h >= 1 && h <= slides.length ? h - 1 : 0);
+    paintClock();
+  }
+
+  function toggleMode() {
+    short = !short;
+    try { localStorage.setItem("pdpMode", short ? "short" : "full"); } catch (e) {}
+    buildRoute(); renderNav(); syncModeBtn(); paintClock();
+  }
+  function syncModeBtn() {
+    var b = $("btnMode");
+    if (!b) return;
+    b.setAttribute("aria-pressed", short ? "true" : "false");
+    b.title = short ? "Hozir: 10 daqiqalik yo'l (M)" : "Hozir: to'liq versiya (M)";
+    b.querySelector("b").textContent = short ? "10 daq" : "To'liq";
   }
 
   function openOv() { $("ov").classList.add("open"); $("ov").setAttribute("aria-hidden", "false"); }
